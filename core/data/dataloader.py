@@ -7,9 +7,11 @@ from .collates import get_collate_function, get_augment_method
 from .samplers import CategoriesSampler
 from ..utils import ModelType
 
-MEAN = [120.39586422 / 255.0, 115.59361427 / 255.0, 104.54012653 / 255.0]
-STD = [70.68188272 / 255.0, 68.27635443 / 255.0, 72.54505529 / 255.0]
+# MEAN = [120.39586422 / 255.0, 115.59361427 / 255.0, 104.54012653 / 255.0]
+# STD = [70.68188272 / 255.0, 68.27635443 / 255.0, 72.54505529 / 255.0]
 
+MEAN = [0.507, 0.487, 0.441]
+STD = [0.267, 0.257, 0.276]
 
 def get_dataloader(config, mode, model_type):
     """Get the dataloader corresponding to the model type and training phase.
@@ -34,8 +36,10 @@ def get_dataloader(config, mode, model_type):
             trfms_list.append(transforms.Resize((256, 256)))
             trfms_list.append(transforms.RandomCrop((224, 224)))
         elif config["image_size"] == 84:
-            trfms_list.append(transforms.Resize((96, 96)))
-            trfms_list.append(transforms.RandomCrop((84, 84)))
+            # trfms_list.append(transforms.Resize((96, 96)))
+            # trfms_list.append(transforms.RandomCrop((84, 84)))
+
+            trfms_list.append(transforms.RandomResizedCrop(84))
         # for MTL -> alternative solution: use avgpool(ks=11)
         elif config["image_size"] == 80:
             # MTL use another MEAN and STD

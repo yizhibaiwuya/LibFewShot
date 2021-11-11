@@ -1,0 +1,34 @@
+includes:
+  - headers/data.yaml
+  - headers/device.yaml
+  #- headers/losses.yaml
+  - headers/misc.yaml
+  - headers/model.yaml
+  - headers/optimizer.yaml
+  - classifiers/Negative_Margin.yaml
+  - backbones/resnet12.yaml
+
+backbone:
+  name: resnet12
+  kwargs: ~
+
+
+epoch: 400
+batch_size: 128
+image_size: 84
+
+
+optimizer:
+  name: Adam
+  kwargs:
+    lr: 3e-3
+    weight_decay: 1e-4
+  other:
+
+
+warmup_params:
+  multiplier: 16
+  epoch: 100
+
+data_root: /data/wzy/miniImageNet--ravi
+test_episode: 600

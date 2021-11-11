@@ -8,14 +8,14 @@ import os
 from core.config import Config
 from core import Test
 
-PATH = "./results/RelationNet-miniImageNet--ravi-resnet18-5-1-Aug-22-2021_21-22-02"
+PATH = "./results/NegNet-miniImageNet--ravi-resnet12-5-1-Nov-08-2021-09-18-02"
 VAR_DICT = {
     "test_epoch": 5,
     "device_ids": "2",
     "n_gpu": 1,
     "test_episode": 600,
     "episode_size": 1,
-    "test_way": 6,
+    "test_way": 5,
 }
 
 if __name__ == "__main__":
